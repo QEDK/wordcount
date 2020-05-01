@@ -3,9 +3,8 @@
 <head>
 	<meta charset="utf-8">
 	<meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=yes">
-	<!-- Bootstrap CSS -->
 	<link rel="stylesheet" type="text/css" href="{{ url_for('static', filename='bootstrap.min.css') }}">
-	<title>Word Counter</title>
+	<title>{%if charcount == 0 %}Word Counter{% else %}{{ wordcount }} words, {{ linecount }} lines{% endif %}</title>
 </head>
 <body>
 	<div class="container-fluid">
@@ -15,9 +14,9 @@
 		</div>
 		<form action="{{ url_for('home') }}" method="POST">
 			<div class="form-row">
-				<div class="col-10">
+				<div class="col-9">
 					{% if text %}
-					<textarea class="form-control" name="wordcount" id="wordcount" rows="12">{{ text }}</textarea>
+					<textarea class="form-control" name="wordcount" id="wordcount" rows="12" required>{{ text }}</textarea>
 					{% else %}
 					<textarea class="form-control" name="wordcount" id="wordcount" rows="12" placeholder="Enter some text here..." required></textarea>
 					{% endif %}
@@ -34,6 +33,10 @@
 						<li class="list-group-item d-flex justify-content-between align-items-center">
 							Number of lines
 							<span class="badge badge-primary badge-pill">{{ linecount }}</span>
+						</li>
+						<li class="list-group-item d-flex justify-content-between align-items-center">
+							Number of characters
+							<span class="badge badge-primary badge-pill">{{ charcount }}</span>
 						</li>
 					</ul>
 				</div>
