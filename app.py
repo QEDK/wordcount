@@ -5,8 +5,8 @@ import re
 app = Flask(__name__)
 csp = {
 	"default-src": "'self'",
-	"style-src": ["'self'", "https://fonts.googleapis.com"],
-	"font-src": "https://fonts.gstatic.com"
+	"style-src": ["'self'", "https://tools-static.wmflabs.org"],
+	"font-src": "https://tools-static.wmflabs.org"
 }
 talisman = Talisman(app, content_security_policy=csp)
 
